@@ -1,2 +1,2 @@
-# CieloAPI
-Communication with Cielo API
+# Cielo e-commerce API
+Communication with Cielo e-commerce API using Delphi
