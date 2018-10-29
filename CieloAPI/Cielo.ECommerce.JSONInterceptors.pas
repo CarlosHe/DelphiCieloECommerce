@@ -251,7 +251,7 @@ begin
   LField := LType.GetField(Field);
   LExtendedDate:=LField.GetValue(Data).AsExtended;
   if LExtendedDate > 0 then
-  Result:= FormatDateTime('yyyy-mm-dd', StrToDate(LField.GetValue(Data).AsString)  )
+  Result:= FormatDateTime('yyyy-mm-dd', StrToDateTime(LField.GetValue(Data).ToString)  )
   else
   Result:= EmptyStr;
 end;
