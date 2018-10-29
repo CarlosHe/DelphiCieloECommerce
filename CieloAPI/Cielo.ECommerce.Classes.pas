@@ -109,6 +109,33 @@ type
     { published declarations }
   end;
 
+  TCieloECCard = class(TInterfacedObject, ICieloECCard, ICieloECExportToJson)
+  private
+    { private declarations }
+    [JsonName('Brand'), JsonReflect(ctString, rtString, TCieloBrandTypeInterceptor, nil, true)]
+    FBrand: TCieloBrandType;
+    [JsonName('CardNumber')]
+    FCardNumber: string;
+    [JsonName('ExpirationDate')]
+    FExpirationDate: string;
+    [JsonName('Holder')]
+    FHolder: string;
+    [JsonName('SecurityCode')]
+    FSecurityCode: string;
+  protected
+    { protected declarations }
+  public
+    { public declarations }
+    function Brand(AValue: TCieloBrandType): ICieloECCard;
+    function CardNumber(AValue: string): ICieloECCard;
+    function ExpirationDate(AValue: string): ICieloECCard;
+    function Holder(AValue: string): ICieloECCard;
+    function SecurityCode(AValue: string): ICieloECCard;
+    function ToJSON: TJsonObject;
+  published
+    { published declarations }
+  end;
+
   TCieloECCustomer = class(TInterfacedObject, ICieloECCustomer, ICieloECExportToJson)
   private
     { private declarations }
@@ -846,7 +873,7 @@ begin
   if Supports(ACard, ICieloECExportToJson, LExportToJson) then
   begin
     LJsonObject := LExportToJson.ToJSON;
-    LJsonObject.AddPair('CusomName',ACusomName);
+    LJsonObject.AddPair('CusomName', ACusomName);
     ACieloECResponse(TCieloECResponse.Create(Post('/1/card/', LJsonObject.ToString)));
   end;
   Result := Self;
@@ -903,7 +930,7 @@ function TCieloECAPI.UpdateRecurrentPayment_Amount(ARecurrentPaymentId: TGUID; A
   : ICieloECAPI;
 begin
   ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Amount', nil,
-    AAmount.ToString )));
+    AAmount.ToString)));
   Result := Self;
 end;
 
@@ -920,8 +947,7 @@ end;
 
 function TCieloECAPI.UpdateRecurrentPayment_Deactivate(ARecurrentPaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Deactivate', nil,
-    '' )));
+  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Deactivate', nil, '')));
   Result := Self;
 end;
 
@@ -962,8 +988,7 @@ end;
 
 function TCieloECAPI.UpdateRecurrentPayment_Reactivate(ARecurrentPaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Reactivate', nil,
-    '' )));
+  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Reactivate', nil, '')));
   Result := Self;
 end;
 
@@ -971,7 +996,7 @@ function TCieloECAPI.UpdateRecurrentPayment_RecurrencyDay(ARecurrentPaymentId: T
   ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
   ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Interval', nil,
-    ARecurrencyDay.ToString )));
+    ARecurrencyDay.ToString)));
   Result := Self;
 end;
 
@@ -1600,6 +1625,46 @@ begin
   LJsonObjectPayment.AddPair(Self.GetType.ToString, LJsonObjectCard as TJsonValue);
 
   Result := LJsonObjectPayment;
+end;
+
+{ TCieloECCard }
+
+function TCieloECCard.Brand(AValue: TCieloBrandType): ICieloECCard;
+begin
+  FBrand := AValue;
+  Result := Self;
+end;
+
+function TCieloECCard.CardNumber(AValue: string): ICieloECCard;
+begin
+  FCardNumber := AValue;
+  Result := Self;
+end;
+
+function TCieloECCard.ExpirationDate(AValue: string): ICieloECCard;
+begin
+  FExpirationDate := AValue;
+  Result := Self;
+end;
+
+function TCieloECCard.Holder(AValue: string): ICieloECCard;
+begin
+  FHolder := AValue;
+  Result := Self;
+end;
+
+function TCieloECCard.SecurityCode(AValue: string): ICieloECCard;
+begin
+  FSecurityCode := AValue;
+  Result := Self;
+end;
+
+function TCieloECCard.ToJSON: TJsonObject;
+var
+  LJsonObject: TJsonObject;
+begin
+  LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
+  Result := LJsonObject;
 end;
 
 end.
