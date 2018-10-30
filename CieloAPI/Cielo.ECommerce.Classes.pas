@@ -504,6 +504,7 @@ type
   public
     { public declarations }
     constructor Create(AHTTPResponse: IHTTPResponse);
+    destructor Destroy; override;
     function ContentAsString(const AEncoding: TEncoding = nil): string;
     function Success: Boolean;
     function HasError: Boolean;
@@ -685,10 +686,8 @@ begin
   LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
 
   if Supports(FAddress, ICieloECExportToJson, LExportToJson) then
-    if LExportToJson.ToJSON <> nil then
       LJsonObject.AddPair('Address', TJsonValue(LExportToJson.ToJSON));
   if Supports(FDeliveryAddress, ICieloECExportToJson, LExportToJson) then
-    if LExportToJson.ToJSON <> nil then
       LJsonObject.AddPair('DeliveryAddress', TJsonValue(LExportToJson.ToJSON));
   Result := LJsonObject;
 end;
@@ -713,17 +712,21 @@ var
   LJsonObject: TJsonObject;
   LExportToJson: ICieloECExportToJson;
   LExportedJson: TJsonObject;
+  LJsonString: TJsonString;
+  LJsonValue: TJsonValue;
   I: Integer;
 begin
   LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
-
   if Supports(FPaymentType, ICieloECExportToJson, LExportToJson) then
   begin
     LExportedJson := LExportToJson.ToJSON;
+    try
     for I := 0 to LExportedJson.Count - 1 do
-      LJsonObject.AddPair(LExportedJson.Pairs[I]);
+      LJsonObject.AddPair(TJsonPair(LExportedJson.Pairs[I].Clone));
+    finally
+        LExportedJson.Free;
+    end;
   end;
-
   Result := LJsonObject;
 end;
 
@@ -762,7 +765,6 @@ begin
   LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
 
   if Supports(FCustomer, ICieloECExportToJson, LExportToJson) then
-    if LExportToJson.ToJSON <> nil then
       LJsonObject.AddPair('Customer', TJsonValue(LExportToJson.ToJSON));
 
   if Supports(FPayment, ICieloECExportToJson, LExportToJson) then
@@ -882,9 +884,16 @@ end;
 function TCieloECAPI.NewSale(ACieloECOrder: ICieloECOrder; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 var
   LExportToJson: ICieloECExportToJson;
+  LJsonObject: TJsonObject;
+  LJsonString: string;
 begin
   if Supports(ACieloECOrder, ICieloECExportToJson, LExportToJson) then
-    ACieloECResponse(TCieloECResponse.Create(Post('/1/sales/', LExportToJson.ToJSON.ToString)));
+  begin
+    LJsonObject:=LExportToJson.ToJSON;
+    LJsonString:=LJsonObject.ToString;
+    LJsonObject.Free;
+    ACieloECResponse(TCieloECResponse.Create(Post('/1/sales/', LJsonString)));
+  end;
   Result := Self;
 end;
 
@@ -1015,6 +1024,12 @@ begin
   begin
     JsonObjectToResponseErrorList(TJsonObject(TJsonObject.Create.ParseJSONValue(FHTTPResponse.ContentAsString, true)));
   end;
+end;
+
+destructor TCieloECResponse.Destroy;
+begin
+  FCieloECResponseErrorList.Free;
+  inherited;
 end;
 
 function TCieloECResponse.GetErrorList: TList<ICieloECResponseError>;
