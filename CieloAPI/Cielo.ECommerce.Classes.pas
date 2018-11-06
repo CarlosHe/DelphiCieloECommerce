@@ -46,13 +46,20 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Street(AValue: string): ICieloECAddress;
-    function Number(AValue: string): ICieloECAddress;
-    function Complement(AValue: string): ICieloECAddress;
-    function ZipCode(AValue: string): ICieloECAddress;
-    function City(AValue: string): ICieloECAddress;
-    function State(AValue: string): ICieloECAddress;
-    function Country(AValue: string): ICieloECAddress;
+    function Street(AValue: string): ICieloECAddress; overload;
+    function Number(AValue: string): ICieloECAddress; overload;
+    function Complement(AValue: string): ICieloECAddress; overload;
+    function ZipCode(AValue: string): ICieloECAddress; overload;
+    function City(AValue: string): ICieloECAddress; overload;
+    function State(AValue: string): ICieloECAddress; overload;
+    function Country(AValue: string): ICieloECAddress; overload;
+    function Street: string; overload;
+    function Number: string; overload;
+    function Complement: string; overload;
+    function ZipCode: string; overload;
+    function City: string; overload;
+    function State: string; overload;
+    function Country: string; overload;
     function ToJSON: TJsonObject;
   published
     { published declarations }
@@ -75,11 +82,18 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Complement(AValue: string): ICieloECDeliveryAddress;
-    function ZipCode(AValue: string): ICieloECDeliveryAddress;
-    function City(AValue: string): ICieloECDeliveryAddress;
-    function State(AValue: string): ICieloECDeliveryAddress;
-    function Country(AValue: string): ICieloECDeliveryAddress;
+    function Complement(AValue: string): ICieloECDeliveryAddress; overload;
+    function ZipCode(AValue: string): ICieloECDeliveryAddress; overload;
+    function City(AValue: string): ICieloECDeliveryAddress; overload;
+    function State(AValue: string): ICieloECDeliveryAddress; overload;
+    function Country(AValue: string): ICieloECDeliveryAddress; overload;
+
+    function Complement: string; overload;
+    function ZipCode: string; overload;
+    function City: string; overload;
+    function State: string; overload;
+    function Country: string; overload;
+
     function ToJSON: TJsonObject;
   published
     { published declarations }
@@ -100,10 +114,16 @@ type
     { protected declarations }
   public
     { public declarations }
-    function AuthorizeNow(AValue: Boolean): ICieloECRecurrentPayment;
-    function StartDate(AValue: TDate): ICieloECRecurrentPayment;
-    function EndDate(AValue: TDate): ICieloECRecurrentPayment;
-    function Interval(AValue: TCieloRecurrentInterval): ICieloECRecurrentPayment;
+    function AuthorizeNow(AValue: Boolean): ICieloECRecurrentPayment; overload;
+    function StartDate(AValue: TDate): ICieloECRecurrentPayment; overload;
+    function EndDate(AValue: TDate): ICieloECRecurrentPayment; overload;
+    function Interval(AValue: TCieloRecurrentInterval): ICieloECRecurrentPayment; overload;
+
+    function AuthorizeNow: Boolean; overload;
+    function StartDate: TDate; overload;
+    function EndDate: TDate; overload;
+    function Interval: TCieloRecurrentInterval; overload;
+
     function ToJSON: TJsonObject;
   published
     { published declarations }
@@ -126,11 +146,18 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Brand(AValue: TCieloBrandType): ICieloECCard;
-    function CardNumber(AValue: string): ICieloECCard;
-    function ExpirationDate(AValue: string): ICieloECCard;
-    function Holder(AValue: string): ICieloECCard;
-    function SecurityCode(AValue: string): ICieloECCard;
+    function Brand(AValue: TCieloBrandType): ICieloECCard; overload;
+    function CardNumber(AValue: string): ICieloECCard; overload;
+    function ExpirationDate(AValue: string): ICieloECCard; overload;
+    function Holder(AValue: string): ICieloECCard; overload;
+    function SecurityCode(AValue: string): ICieloECCard; overload;
+
+    function Brand: TCieloBrandType; overload;
+    function CardNumber: string; overload;
+    function ExpirationDate: string; overload;
+    function Holder: string; overload;
+    function SecurityCode: string; overload;
+
     function ToJSON: TJsonObject;
   published
     { published declarations }
@@ -159,14 +186,24 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Status(AValue: TCieloCustomerStatus): ICieloECCustomer;
-    function Name(AValue: string): ICieloECCustomer;
-    function Identity(AValue: string): ICieloECCustomer;
-    function IdentityType(AValue: TCieloCustomerIdentityType): ICieloECCustomer;
-    function Email(AValue: string): ICieloECCustomer;
-    function Birthdate(AValue: TDate): ICieloECCustomer;
-    function Address(AValue: ICieloECAddress): ICieloECCustomer;
-    function DeliveryAddress(AValue: ICieloECDeliveryAddress): ICieloECCustomer;
+    function Status(AValue: TCieloCustomerStatus): ICieloECCustomer; overload;
+    function Name(AValue: string): ICieloECCustomer; overload;
+    function Identity(AValue: string): ICieloECCustomer; overload;
+    function IdentityType(AValue: TCieloCustomerIdentityType): ICieloECCustomer; overload;
+    function Email(AValue: string): ICieloECCustomer; overload;
+    function Birthdate(AValue: TDate): ICieloECCustomer; overload;
+    function Address(AValue: ICieloECAddress): ICieloECCustomer; overload;
+    function DeliveryAddress(AValue: ICieloECDeliveryAddress): ICieloECCustomer; overload;
+
+    function Status: TCieloCustomerStatus; overload;
+    function Name: string; overload;
+    function Identity: string; overload;
+    function IdentityType: TCieloCustomerIdentityType; overload;
+    function Email: string; overload;
+    function Birthdate: TDate; overload;
+    function Address: ICieloECAddress; overload;
+    function DeliveryAddress: ICieloECDeliveryAddress; overload;
+
     function ToJSON: TJsonObject;
   published
     { published declarations }
@@ -207,22 +244,40 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Authenticate(AValue: Boolean): ICieloECPaymentCreditCard;
-    function Brand(AValue: TCieloBrandType): ICieloECPaymentCreditCard;
-    function Capture(AValue: Boolean): ICieloECPaymentCreditCard;
-    function CardNumber(AValue: string): ICieloECPaymentCreditCard;
-    function Country(AValue: string): ICieloECPaymentCreditCard;
-    function Currency(AValue: string): ICieloECPaymentCreditCard;
-    function ExpirationDate(AValue: string): ICieloECPaymentCreditCard;
-    function Holder(AValue: string): ICieloECPaymentCreditCard;
-    function Installments(AValue: Integer): ICieloECPaymentCreditCard;
-    function Interest(AValue: TCieloInterest): ICieloECPaymentCreditCard;
-    function Provider(AValue: TCieloProvider): ICieloECPaymentCreditCard;
-    function ReturnUrl(AValue: string): ICieloECPaymentCreditCard;
-    function SaveCard(AValue: Boolean): ICieloECPaymentCreditCard;
-    function SecurityCode(AValue: string): ICieloECPaymentCreditCard;
-    function ServiceTaxAmount(AValue: Single): ICieloECPaymentCreditCard;
-    function SoftDescriptor(AValue: string): ICieloECPaymentCreditCard;
+    function Authenticate(AValue: Boolean): ICieloECPaymentCreditCard; overload;
+    function Brand(AValue: TCieloBrandType): ICieloECPaymentCreditCard; overload;
+    function Capture(AValue: Boolean): ICieloECPaymentCreditCard; overload;
+    function CardNumber(AValue: string): ICieloECPaymentCreditCard; overload;
+    function Country(AValue: string): ICieloECPaymentCreditCard; overload;
+    function Currency(AValue: string): ICieloECPaymentCreditCard; overload;
+    function ExpirationDate(AValue: string): ICieloECPaymentCreditCard; overload;
+    function Holder(AValue: string): ICieloECPaymentCreditCard; overload;
+    function Installments(AValue: Integer): ICieloECPaymentCreditCard; overload;
+    function Interest(AValue: TCieloInterest): ICieloECPaymentCreditCard; overload;
+    function Provider(AValue: TCieloProvider): ICieloECPaymentCreditCard; overload;
+    function ReturnUrl(AValue: string): ICieloECPaymentCreditCard; overload;
+    function SaveCard(AValue: Boolean): ICieloECPaymentCreditCard; overload;
+    function SecurityCode(AValue: string): ICieloECPaymentCreditCard; overload;
+    function ServiceTaxAmount(AValue: Single): ICieloECPaymentCreditCard; overload;
+    function SoftDescriptor(AValue: string): ICieloECPaymentCreditCard; overload;
+
+    function Authenticate: Boolean; overload;
+    function Brand: TCieloBrandType; overload;
+    function Capture: Boolean; overload;
+    function CardNumber: string; overload;
+    function Country: string; overload;
+    function Currency: string; overload;
+    function ExpirationDate: string; overload;
+    function Holder: string; overload;
+    function Installments: Integer; overload;
+    function Interest: TCieloInterest; overload;
+    function Provider: TCieloProvider; overload;
+    function ReturnUrl: string; overload;
+    function SaveCard: Boolean; overload;
+    function SecurityCode: string; overload;
+    function ServiceTaxAmount: Single; overload;
+    function SoftDescriptor: string; overload;
+
     function &GetType: TCieloPaymentType; override;
     function ToJSON: TJsonObject;
   published
@@ -243,13 +298,22 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Authenticate(AValue: Boolean): ICieloECPaymentDebitCard;
-    function Brand(AValue: TCieloBrandType): ICieloECPaymentDebitCard;
-    function CardNumber(AValue: string): ICieloECPaymentDebitCard;
-    function ExpirationDate(AValue: string): ICieloECPaymentDebitCard;
-    function Holder(AValue: string): ICieloECPaymentDebitCard;
-    function ReturnUrl(AValue: string): ICieloECPaymentDebitCard;
-    function SecurityCode(AValue: string): ICieloECPaymentDebitCard;
+    function Authenticate(AValue: Boolean): ICieloECPaymentDebitCard; overload;
+    function Brand(AValue: TCieloBrandType): ICieloECPaymentDebitCard; overload;
+    function CardNumber(AValue: string): ICieloECPaymentDebitCard; overload;
+    function ExpirationDate(AValue: string): ICieloECPaymentDebitCard; overload;
+    function Holder(AValue: string): ICieloECPaymentDebitCard; overload;
+    function ReturnUrl(AValue: string): ICieloECPaymentDebitCard; overload;
+    function SecurityCode(AValue: string): ICieloECPaymentDebitCard; overload;
+
+    function CardNumber: string; overload;
+    function Holder: string; overload;
+    function ExpirationDate: string; overload;
+    function SecurityCode: string; overload;
+    function Brand: TCieloBrandType; overload;
+    function Authenticate: Boolean; overload;
+    function ReturnUrl: string; overload;
+
     function &GetType: TCieloPaymentType; override;
     function ToJSON: TJsonObject;
   published
@@ -282,23 +346,42 @@ type
   public
     { public declarations }
     constructor Create;
-    function Authenticate(AValue: Boolean): ICieloECPaymentRecurrentCreditCard;
-    function Brand(AValue: TCieloBrandType): ICieloECPaymentRecurrentCreditCard;
-    function Capture(AValue: Boolean): ICieloECPaymentRecurrentCreditCard;
-    function CardNumber(AValue: string): ICieloECPaymentRecurrentCreditCard;
-    function Country(AValue: string): ICieloECPaymentRecurrentCreditCard;
-    function Currency(AValue: string): ICieloECPaymentRecurrentCreditCard;
-    function ExpirationDate(AValue: string): ICieloECPaymentRecurrentCreditCard;
-    function Holder(AValue: string): ICieloECPaymentRecurrentCreditCard;
-    function Interest(AValue: TCieloInterest): ICieloECPaymentRecurrentCreditCard;
-    function Provider(AValue: TCieloProvider): ICieloECPaymentRecurrentCreditCard;
-    function Recurrent(AValue: Boolean): ICieloECPaymentRecurrentCreditCard;
-    function RecurrentPayment(AValue: ICieloECRecurrentPayment): ICieloECPaymentRecurrentCreditCard;
-    function ReturnUrl(AValue: string): ICieloECPaymentRecurrentCreditCard;
-    function SaveCard(AValue: Boolean): ICieloECPaymentRecurrentCreditCard;
-    function SecurityCode(AValue: string): ICieloECPaymentRecurrentCreditCard;
-    function ServiceTaxAmount(AValue: Single): ICieloECPaymentRecurrentCreditCard;
-    function SoftDescriptor(AValue: string): ICieloECPaymentRecurrentCreditCard;
+    function Authenticate(AValue: Boolean): ICieloECPaymentRecurrentCreditCard; overload;
+    function Brand(AValue: TCieloBrandType): ICieloECPaymentRecurrentCreditCard; overload;
+    function Capture(AValue: Boolean): ICieloECPaymentRecurrentCreditCard; overload;
+    function CardNumber(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+    function Country(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+    function Currency(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+    function ExpirationDate(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+    function Holder(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+    function Interest(AValue: TCieloInterest): ICieloECPaymentRecurrentCreditCard; overload;
+    function Provider(AValue: TCieloProvider): ICieloECPaymentRecurrentCreditCard; overload;
+    function Recurrent(AValue: Boolean): ICieloECPaymentRecurrentCreditCard; overload;
+    function RecurrentPayment(AValue: ICieloECRecurrentPayment): ICieloECPaymentRecurrentCreditCard; overload;
+    function ReturnUrl(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+    function SaveCard(AValue: Boolean): ICieloECPaymentRecurrentCreditCard; overload;
+    function SecurityCode(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+    function ServiceTaxAmount(AValue: Single): ICieloECPaymentRecurrentCreditCard; overload;
+    function SoftDescriptor(AValue: string): ICieloECPaymentRecurrentCreditCard; overload;
+
+    function Authenticate: Boolean; overload;
+    function Brand: TCieloBrandType; overload;
+    function Capture: Boolean; overload;
+    function CardNumber: string; overload;
+    function Country: string; overload;
+    function Currency: string; overload;
+    function ExpirationDate: string; overload;
+    function Holder: string; overload;
+    function Interest: TCieloInterest; overload;
+    function Provider: TCieloProvider; overload;
+    function ReturnUrl: string; overload;
+    function SaveCard: Boolean; overload;
+    function SecurityCode: string; overload;
+    function ServiceTaxAmount: Single; overload;
+    function SoftDescriptor: string; overload;
+    function Recurrent: Boolean; overload;
+    function RecurrentPayment: ICieloECRecurrentPayment; overload;
+
     function &GetType: TCieloPaymentType; override;
     function ToJSON: TJsonObject;
   published
@@ -318,9 +401,14 @@ type
     { protected declarations }
   public
     { public declarations }
-    function CardToken(AValue: string): ICieloECPaymentCardToken;
-    function SecurityCode(AValue: string): ICieloECPaymentCardToken;
-    function Brand(AValue: TCieloBrandType): ICieloECPaymentCardToken;
+    function CardToken(AValue: string): ICieloECPaymentCardToken; overload;
+    function SecurityCode(AValue: string): ICieloECPaymentCardToken; overload;
+    function Brand(AValue: TCieloBrandType): ICieloECPaymentCardToken; overload;
+
+    function CardToken: string; overload;
+    function SecurityCode: string; overload;
+    function Brand: TCieloBrandType; overload;
+
     function &GetType: TCieloPaymentType; override;
     function ToJSON: TJsonObject;
   published
@@ -352,15 +440,26 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Provider(AValue: TCieloProvider): ICieloECPaymentBoleto;
-    function ReturnUrl(AValue: string): ICieloECPaymentBoleto;
-    function Address(AValue: string): ICieloECPaymentBoleto;
-    function BoletoNumber(AValue: string): ICieloECPaymentBoleto;
-    function Assignor(AValue: string): ICieloECPaymentBoleto;
-    function Demonstrative(AValue: string): ICieloECPaymentBoleto;
-    function ExpirationDate(AValue: TDate): ICieloECPaymentBoleto;
-    function Identification(AValue: string): ICieloECPaymentBoleto;
-    function Instructions(AValue: string): ICieloECPaymentBoleto;
+    function Provider(AValue: TCieloProvider): ICieloECPaymentBoleto; overload;
+    function ReturnUrl(AValue: string): ICieloECPaymentBoleto; overload;
+    function Address(AValue: string): ICieloECPaymentBoleto; overload;
+    function BoletoNumber(AValue: string): ICieloECPaymentBoleto; overload;
+    function Assignor(AValue: string): ICieloECPaymentBoleto; overload;
+    function Demonstrative(AValue: string): ICieloECPaymentBoleto; overload;
+    function ExpirationDate(AValue: TDate): ICieloECPaymentBoleto; overload;
+    function Identification(AValue: string): ICieloECPaymentBoleto; overload;
+    function Instructions(AValue: string): ICieloECPaymentBoleto; overload;
+
+    function Address: string; overload;
+    function BoletoNumber: string; overload;
+    function Assignor: string; overload;
+    function Demonstrative: string; overload;
+    function ExpirationDate: TDate; overload;
+    function Identification: string; overload;
+    function Instructions: string; overload;
+    function Provider: TCieloProvider; overload;
+    function ReturnUrl: string; overload;
+
     function &GetType: TCieloPaymentType; override;
     function ToJSON: TJsonObject;
   published
@@ -378,8 +477,12 @@ type
     { protected declarations }
   public
     { public declarations }
-    function Provider(AValue: TCieloProvider): ICieloECPaymentEletronicTransfer;
-    function ReturnUrl(AValue: string): ICieloECPaymentEletronicTransfer;
+    function Provider(AValue: TCieloProvider): ICieloECPaymentEletronicTransfer; overload;
+    function ReturnUrl(AValue: string): ICieloECPaymentEletronicTransfer; overload;
+
+    function Provider: TCieloProvider; overload;
+    function ReturnUrl: string; overload;
+
     function &GetType: TCieloPaymentType; override;
     function ToJSON: TJsonObject;
   published
@@ -399,8 +502,12 @@ type
     { protected declarations }
   public
     { public declarations }
-    function &Type(AValue: ICieloECPaymentType): ICieloECPayment;
-    function Amount(AValue: Single): ICieloECPayment;
+    function &Type(AValue: ICieloECPaymentType): ICieloECPayment; overload;
+    function Amount(AValue: Single): ICieloECPayment; overload;
+
+    function &Type: ICieloECPaymentType; overload;
+    function Amount: Single; overload;
+
     function ToJSON: TJsonObject;
   published
     { published declarations }
@@ -419,9 +526,14 @@ type
     { protected declarations }
   public
     { public declarations }
-    function MerchantOrderId(AValue: string): ICieloECOrder;
-    function Customer(AValue: ICieloECCustomer): ICieloECOrder;
-    function Payment(AValue: ICieloECPayment): ICieloECOrder;
+    function MerchantOrderId(AValue: string): ICieloECOrder; overload;
+    function Customer(AValue: ICieloECCustomer): ICieloECOrder; overload;
+    function Payment(AValue: ICieloECPayment): ICieloECOrder; overload;
+
+    function MerchantOrderId: string; overload;
+    function Customer: ICieloECCustomer; overload;
+    function Payment: ICieloECPayment; overload;
+
     function ToJSON: TJsonObject;
   published
     { published declarations }
@@ -450,7 +562,7 @@ type
     FHttpClient: THTTPClient;
     FMerchant: ICieloECMerchant;
     FRequestId: TGUID;
-    FCieloEnvironment: TCieloEnvironment;
+    FEnvironment: TCieloEnvironment;
   protected
     { protected declarations }
     function BuildUrlParams(AParams: TDictionary<string, string>): string;
@@ -461,34 +573,43 @@ type
     { public declarations }
     constructor Create;
     destructor Destroy; override;
-    function Merchant(AValue: ICieloECMerchant): ICieloECAPI;
-    function RequestId(AValue: TGUID): ICieloECAPI;
-    function Environment(AValue: TCieloEnvironment): ICieloECAPI;
+    function Merchant(AValue: ICieloECMerchant): ICieloECAPI; overload;
+    function RequestId(AValue: TGUID): ICieloECAPI; overload;
+    function Environment(AValue: TCieloEnvironment): ICieloECAPI; overload;
+
+    function Merchant: ICieloECMerchant; overload;
+    function RequestId: TGUID; overload;
+    function Environment: TCieloEnvironment; overload;
+
     function NewSale(ACieloECOrder: ICieloECOrder; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function GetSale(APaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function GetPayments(AMerchantOrderId: string; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function GetRecurrentPayment(ARecurrentPaymentId: string; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function GetCatchSale(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function CancelPayment(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function CancelOrder(AMerchantOrderId: string; AParams: TDictionary<string, string>; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+    function GetSale(APaymentId: TGUID; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function GetPayments(AMerchantOrderId: string; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function GetRecurrentPayment(ARecurrentPaymentId: string; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function GetCatchSale(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function CancelPayment(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
+      : ICieloECAPI;
+    function CancelOrder(AMerchantOrderId: string; AParams: TDictionary<string, string>; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
       : ICieloECAPI;
     function UpdateRecurrentPayment_Customer(ARecurrentPaymentId: TGUID; ACieloECCustomer: ICieloECCustomer;
-      ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function UpdateRecurrentPayment_EndDate(ARecurrentPaymentId: TGUID; ADate: TDate; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+      ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function UpdateRecurrentPayment_EndDate(ARecurrentPaymentId: TGUID; ADate: TDate; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
       : ICieloECAPI;
     function UpdateRecurrentPayment_Interval(ARecurrentPaymentId: TGUID; ARecurrentInterval: TCieloRecurrentInterval;
-      ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+      ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
     function UpdateRecurrentPayment_RecurrencyDay(ARecurrentPaymentId: TGUID; ARecurrencyDay: Byte;
-      ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function UpdateRecurrentPayment_Amount(ARecurrentPaymentId: TGUID; AAmount: Integer; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+      ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function UpdateRecurrentPayment_Amount(ARecurrentPaymentId: TGUID; AAmount: Integer; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
       : ICieloECAPI;
     function UpdateRecurrentPayment_NextPaymentDate(ARecurrentPaymentId: TGUID; ANextPaymentDate: TDate;
-      ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+      ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
     function UpdateRecurrentPayment_Payment(ARecurrentPaymentId: TGUID; APayment: ICieloECPaymentCreditCard;
-      ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function UpdateRecurrentPayment_Deactivate(ARecurrentPaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function UpdateRecurrentPayment_Reactivate(ARecurrentPaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
-    function NewCardToken(ACusomName: string; ACard: ICieloECCard; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+      ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function UpdateRecurrentPayment_Deactivate(ARecurrentPaymentId: TGUID; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function UpdateRecurrentPayment_Reactivate(ARecurrentPaymentId: TGUID; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function NewCardToken(ACustomName: string; ACard: ICieloECCard; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+    function ZeroAuth(ACieloECCard: ICieloECCard; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI; overload;
+    function ZeroAuth(ACieloECCardToken: ICieloECCardToken; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI; overload;
+    function CardBin(ACardBIN: string; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
   published
     { published declarations }
   end;
@@ -506,6 +627,7 @@ type
     constructor Create(AHTTPResponse: IHTTPResponse);
     destructor Destroy; override;
     function ContentAsString(const AEncoding: TEncoding = nil): string;
+    function ContentAsJsonObject(const AEncoding: TEncoding = nil): TJsonObject;
     function Success: Boolean;
     function HasError: Boolean;
     function GetErrorList: TList<ICieloECResponseError>;
@@ -585,10 +707,45 @@ begin
   Result := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
 end;
 
+function TCieloECAddress.ZipCode: string;
+begin
+  Result := FZipCode;
+end;
+
 function TCieloECAddress.ZipCode(AValue: string): ICieloECAddress;
 begin
   FZipCode := AValue;
   Result := Self;
+end;
+
+function TCieloECAddress.City: string;
+begin
+  Result := FCity;
+end;
+
+function TCieloECAddress.Complement: string;
+begin
+  Result := FComplement;
+end;
+
+function TCieloECAddress.Country: string;
+begin
+  Result := FCountry;
+end;
+
+function TCieloECAddress.Number: string;
+begin
+  Result := FNumber;
+end;
+
+function TCieloECAddress.State: string;
+begin
+  Result := FState;
+end;
+
+function TCieloECAddress.Street: string;
+begin
+  Result := FStreet;
 end;
 
 { TCieloECDeliveryAddress }
@@ -622,10 +779,35 @@ begin
   Result := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
 end;
 
+function TCieloECDeliveryAddress.ZipCode: string;
+begin
+  Result := FZipCode;
+end;
+
 function TCieloECDeliveryAddress.ZipCode(AValue: string): ICieloECDeliveryAddress;
 begin
   FZipCode := AValue;
   Result := Self;
+end;
+
+function TCieloECDeliveryAddress.City: string;
+begin
+  Result := FCity;
+end;
+
+function TCieloECDeliveryAddress.Complement: string;
+begin
+  Result := FComplement;
+end;
+
+function TCieloECDeliveryAddress.Country: string;
+begin
+  Result := FCountry;
+end;
+
+function TCieloECDeliveryAddress.State: string;
+begin
+  Result := FState;
 end;
 
 { TCieloECCustomer }
@@ -686,10 +868,50 @@ begin
   LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
 
   if Supports(FAddress, ICieloECExportToJson, LExportToJson) then
-      LJsonObject.AddPair('Address', TJsonValue(LExportToJson.ToJSON));
+    LJsonObject.AddPair('Address', TJsonValue(LExportToJson.ToJSON));
   if Supports(FDeliveryAddress, ICieloECExportToJson, LExportToJson) then
-      LJsonObject.AddPair('DeliveryAddress', TJsonValue(LExportToJson.ToJSON));
+    LJsonObject.AddPair('DeliveryAddress', TJsonValue(LExportToJson.ToJSON));
   Result := LJsonObject;
+end;
+
+function TCieloECCustomer.Address: ICieloECAddress;
+begin
+  Result := FAddress;
+end;
+
+function TCieloECCustomer.Birthdate: TDate;
+begin
+  Result := FBirthdate;
+end;
+
+function TCieloECCustomer.DeliveryAddress: ICieloECDeliveryAddress;
+begin
+  Result := FDeliveryAddress;
+end;
+
+function TCieloECCustomer.Email: string;
+begin
+  Result := FEmail;
+end;
+
+function TCieloECCustomer.Identity: string;
+begin
+  Result := FIdentity;
+end;
+
+function TCieloECCustomer.IdentityType: TCieloCustomerIdentityType;
+begin
+  Result := FIdentityType;
+end;
+
+function TCieloECCustomer.Name: string;
+begin
+  Result := FName;
+end;
+
+function TCieloECCustomer.Status: TCieloCustomerStatus;
+begin
+  Result := FStatus;
 end;
 
 { TCieloECPaymentTypeBase }
@@ -707,6 +929,11 @@ begin
   Result := Self;
 end;
 
+function TCieloECPayment.Amount: Single;
+begin
+  Result := FAmount;
+end;
+
 function TCieloECPayment.ToJSON: TJsonObject;
 var
   LJsonObject: TJsonObject;
@@ -721,10 +948,10 @@ begin
   begin
     LExportedJson := LExportToJson.ToJSON;
     try
-    for I := 0 to LExportedJson.Count - 1 do
-      LJsonObject.AddPair(TJsonPair(LExportedJson.Pairs[I].Clone));
+      for I := 0 to LExportedJson.Count - 1 do
+        LJsonObject.AddPair(TJsonPair(LExportedJson.Pairs[I].Clone));
     finally
-        LExportedJson.Free;
+      LExportedJson.Free;
     end;
   end;
   Result := LJsonObject;
@@ -735,6 +962,11 @@ begin
   FType := AValue.GetType.ToString;
   FPaymentType := AValue;
   Result := Self;
+end;
+
+function TCieloECPayment.&Type: ICieloECPaymentType;
+begin
+  Result := FPaymentType;
 end;
 
 { TCieloECOrder }
@@ -765,12 +997,27 @@ begin
   LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
 
   if Supports(FCustomer, ICieloECExportToJson, LExportToJson) then
-      LJsonObject.AddPair('Customer', TJsonValue(LExportToJson.ToJSON));
+    LJsonObject.AddPair('Customer', TJsonValue(LExportToJson.ToJSON));
 
   if Supports(FPayment, ICieloECExportToJson, LExportToJson) then
     LJsonObject.AddPair('Payment', TJsonValue(LExportToJson.ToJSON));
 
   Result := LJsonObject;
+end;
+
+function TCieloECOrder.Customer: ICieloECCustomer;
+begin
+  Result := FCustomer;
+end;
+
+function TCieloECOrder.MerchantOrderId: string;
+begin
+  Result := FMerchantOrderId;
+end;
+
+function TCieloECOrder.Payment: ICieloECPayment;
+begin
+  Result := FPayment;
 end;
 
 { TCieloECAPI }
@@ -789,17 +1036,23 @@ begin
   Result := LUrlParams.TrimRight(['&']);
 end;
 
-function TCieloECAPI.CancelOrder(AMerchantOrderId: string; AParams: TDictionary<string, string>; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+function TCieloECAPI.CancelOrder(AMerchantOrderId: string; AParams: TDictionary<string, string>; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
   : ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/sales/OrderId/' + AMerchantOrderId + '/void', AParams)));
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/sales/OrderId/' + AMerchantOrderId + '/void', AParams)));
   Result := Self;
 end;
 
-function TCieloECAPI.CancelPayment(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+function TCieloECAPI.CancelPayment(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
   : ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/sales/' + APaymentId.ToString.Trim(['{', '}']) + '/void', AParams)));
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/sales/' + APaymentId.ToString.Trim(['{', '}']) + '/void', AParams)));
+  Result := Self;
+end;
+
+function TCieloECAPI.CardBin(ACardBIN: string; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+begin
+  ACieloECResponse(TCieloECResponse.Create(Get('/1/cardBin/' + ACardBIN.Trim)));
   Result := Self;
 end;
 
@@ -815,9 +1068,14 @@ begin
   inherited;
 end;
 
+function TCieloECAPI.Environment: TCieloEnvironment;
+begin
+  Result := FEnvironment;
+end;
+
 function TCieloECAPI.Environment(AValue: TCieloEnvironment): ICieloECAPI;
 begin
-  FCieloEnvironment := AValue;
+  FEnvironment := AValue;
   Result := Self;
 end;
 
@@ -826,37 +1084,45 @@ var
   LParams: string;
 begin
   if AParams <> nil then
+  begin
     LParams := BuildUrlParams(AParams);
+    AParams.Free;
+  end;
   Result := FHttpClient.Get(TCieloECUrlBuilder.Query(TCieloEnvironment.Sandbox) + ARoute + LParams);
 end;
 
-function TCieloECAPI.GetCatchSale(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+function TCieloECAPI.GetCatchSale(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
   : ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/sales/' + APaymentId.ToString.Trim(['{', '}']) + '/capture', AParams)));
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/sales/' + APaymentId.ToString.Trim(['{', '}']) + '/capture', AParams)));
   Result := Self;
 end;
 
-function TCieloECAPI.GetPayments(AMerchantOrderId: string; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+function TCieloECAPI.GetPayments(AMerchantOrderId: string; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 var
   LParams: TDictionary<string, string>;
 begin
   LParams := TDictionary<string, string>.Create;
   LParams.Add('merchantOrderId', AMerchantOrderId);
-  ACieloECesponse(TCieloECResponse.Create(Get('/1/sales', LParams)));
+  ACieloECResponse(TCieloECResponse.Create(Get('/1/sales', LParams)));
   Result := Self;
 end;
 
-function TCieloECAPI.GetRecurrentPayment(ARecurrentPaymentId: string; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+function TCieloECAPI.GetRecurrentPayment(ARecurrentPaymentId: string; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Get('/1/RecurrentPayment/' + ARecurrentPaymentId)));
+  ACieloECResponse(TCieloECResponse.Create(Get('/1/RecurrentPayment/' + ARecurrentPaymentId)));
   Result := Self;
 end;
 
-function TCieloECAPI.GetSale(APaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+function TCieloECAPI.GetSale(APaymentId: TGUID; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Get('/1/sales/' + APaymentId.ToString.Trim(['{', '}']))));
+  ACieloECResponse(TCieloECResponse.Create(Get('/1/sales/' + APaymentId.ToString.Trim(['{', '}']))));
   Result := Self;
+end;
+
+function TCieloECAPI.Merchant: ICieloECMerchant;
+begin
+  Result := FMerchant;
 end;
 
 function TCieloECAPI.Merchant(AValue: ICieloECMerchant): ICieloECAPI;
@@ -867,16 +1133,19 @@ begin
   Result := Self;
 end;
 
-function TCieloECAPI.NewCardToken(ACusomName: string; ACard: ICieloECCard; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+function TCieloECAPI.NewCardToken(ACustomName: string; ACard: ICieloECCard; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 var
   LExportToJson: ICieloECExportToJson;
   LJsonObject: TJsonObject;
+  LJsonString: string;
 begin
   if Supports(ACard, ICieloECExportToJson, LExportToJson) then
   begin
     LJsonObject := LExportToJson.ToJSON;
-    LJsonObject.AddPair('CusomName', ACusomName);
-    ACieloECResponse(TCieloECResponse.Create(Post('/1/card/', LJsonObject.ToString)));
+    LJsonObject.AddPair('CustomName', ACustomName);
+    LJsonString := LJsonObject.ToString;
+    LJsonObject.Free;
+    ACieloECResponse(TCieloECResponse.Create(Post('/1/card/', LJsonString)));
   end;
   Result := Self;
 end;
@@ -889,8 +1158,8 @@ var
 begin
   if Supports(ACieloECOrder, ICieloECExportToJson, LExportToJson) then
   begin
-    LJsonObject:=LExportToJson.ToJSON;
-    LJsonString:=LJsonObject.ToString;
+    LJsonObject := LExportToJson.ToJSON;
+    LJsonString := LJsonObject.ToString;
     LJsonObject.Free;
     ACieloECResponse(TCieloECResponse.Create(Post('/1/sales/', LJsonString)));
   end;
@@ -919,13 +1188,21 @@ begin
     LSource := TStringStream.Create(ABody);
     try
       if AParams <> nil then
+      begin
         LParams := BuildUrlParams(AParams);
+        AParams.Free;
+      end;
       Result := FHttpClient.Put(TCieloECUrlBuilder.Request(TCieloEnvironment.Sandbox) + ARoute + LParams, LSource);
     finally
       LSource.Free;
     end;
   end;
 
+end;
+
+function TCieloECAPI.RequestId: TGUID;
+begin
+  Result := FRequestId;
 end;
 
 function TCieloECAPI.RequestId(AValue: TGUID): ICieloECAPI;
@@ -935,81 +1212,125 @@ begin
   Result := Self;
 end;
 
-function TCieloECAPI.UpdateRecurrentPayment_Amount(ARecurrentPaymentId: TGUID; AAmount: Integer; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+function TCieloECAPI.UpdateRecurrentPayment_Amount(ARecurrentPaymentId: TGUID; AAmount: Integer; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
   : ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Amount', nil,
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Amount', nil,
     AAmount.ToString)));
   Result := Self;
 end;
 
 function TCieloECAPI.UpdateRecurrentPayment_Customer(ARecurrentPaymentId: TGUID; ACieloECCustomer: ICieloECCustomer;
-  ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+  ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 var
   LExportToJson: ICieloECExportToJson;
+  LJsonObject: TJsonObject;
+  LJsonString: string;
 begin
   if Supports(ACieloECCustomer, ICieloECExportToJson, LExportToJson) then
-    ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Customer', nil,
-      LExportToJson.ToJSON.ToString)));
+  begin
+    LJsonObject := LExportToJson.ToJSON;
+    LJsonString := LJsonObject.ToString;
+    LJsonObject.Free;
+    ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Customer', nil,
+      LJsonString)));
+  end;
   Result := Self;
 end;
 
-function TCieloECAPI.UpdateRecurrentPayment_Deactivate(ARecurrentPaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+function TCieloECAPI.UpdateRecurrentPayment_Deactivate(ARecurrentPaymentId: TGUID; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Deactivate', nil, '')));
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Deactivate', nil, '')));
   Result := Self;
 end;
 
-function TCieloECAPI.UpdateRecurrentPayment_EndDate(ARecurrentPaymentId: TGUID; ADate: TDate; ACieloECesponse: TCieloECResponse<ICieloECResponse>)
+function TCieloECAPI.UpdateRecurrentPayment_EndDate(ARecurrentPaymentId: TGUID; ADate: TDate; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
   : ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/EndDate', nil,
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/EndDate', nil,
     FormatDateTime('yyyy-mm-dd', ADate))));
   Result := Self;
 end;
 
 function TCieloECAPI.UpdateRecurrentPayment_Interval(ARecurrentPaymentId: TGUID; ARecurrentInterval: TCieloRecurrentInterval;
-  ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+  ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Interval', nil,
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Interval', nil,
     ARecurrentInterval.ToInteger.ToString)));
   Result := Self;
 end;
 
 function TCieloECAPI.UpdateRecurrentPayment_NextPaymentDate(ARecurrentPaymentId: TGUID; ANextPaymentDate: TDate;
-  ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+  ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/NextPaymentDate', nil,
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/NextPaymentDate', nil,
     FormatDateTime('yyyy-mm-dd', ANextPaymentDate))));
   Result := Self;
 end;
 
 function TCieloECAPI.UpdateRecurrentPayment_Payment(ARecurrentPaymentId: TGUID; APayment: ICieloECPaymentCreditCard;
-  ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+  ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 var
   LExportToJson: ICieloECExportToJson;
 begin
   if Supports(APayment, ICieloECExportToJson, LExportToJson) then
-    ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Payment', nil,
+    ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Payment', nil,
       LExportToJson.ToJSON.ToString)));
   Result := Self;
 end;
 
-function TCieloECAPI.UpdateRecurrentPayment_Reactivate(ARecurrentPaymentId: TGUID; ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+function TCieloECAPI.UpdateRecurrentPayment_Reactivate(ARecurrentPaymentId: TGUID; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Reactivate', nil, '')));
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Reactivate', nil, '')));
   Result := Self;
 end;
 
 function TCieloECAPI.UpdateRecurrentPayment_RecurrencyDay(ARecurrentPaymentId: TGUID; ARecurrencyDay: Byte;
-  ACieloECesponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+  ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
 begin
-  ACieloECesponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Interval', nil,
+  ACieloECResponse(TCieloECResponse.Create(Put('/1/RecurrentPayment/' + ARecurrentPaymentId.ToString.Trim(['{', '}']) + '/Interval', nil,
     ARecurrencyDay.ToString)));
   Result := Self;
 end;
 
+function TCieloECAPI.ZeroAuth(ACieloECCardToken: ICieloECCardToken; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+var
+  LExportToJson: ICieloECExportToJson;
+  LJsonObject: TJsonObject;
+  LJsonString: string;
+begin
+  if Supports(ACieloECCardToken, ICieloECExportToJson, LExportToJson) then
+  begin
+    LJsonObject := LExportToJson.ToJSON;
+    LJsonString := LJsonObject.ToString;
+    LJsonObject.Free;
+    ACieloECResponse(TCieloECResponse.Create(Post('/1/zeroauth', LJsonString)));
+  end;
+  Result := Self;
+end;
+
+function TCieloECAPI.ZeroAuth(ACieloECCard: ICieloECCard; ACieloECResponse: TCieloECResponse<ICieloECResponse>): ICieloECAPI;
+var
+  LExportToJson: ICieloECExportToJson;
+  LJsonObject: TJsonObject;
+  LJsonString: string;
+begin
+  if Supports(ACieloECCard, ICieloECExportToJson, LExportToJson) then
+  begin
+    LJsonObject := LExportToJson.ToJSON;
+    LJsonString := LJsonObject.ToString;
+    LJsonObject.Free;
+    ACieloECResponse(TCieloECResponse.Create(Post('/1/zeroauth', LJsonString)));
+  end;
+  Result := Self;
+end;
+
 { TCieloECResponse }
+
+function TCieloECResponse.ContentAsJsonObject(const AEncoding: TEncoding): TJsonObject;
+begin
+  Result := TJsonObject.ParseJSONValue(ContentAsString(AEncoding)) as TJsonObject;
+end;
 
 function TCieloECResponse.ContentAsString(const AEncoding: TEncoding): string;
 begin
@@ -1094,9 +1415,19 @@ end;
 
 { TCieloECPaymentCardToken }
 
+function TCieloECPaymentCardToken.CardToken: string;
+begin
+  Result := FCardToken;
+end;
+
 function TCieloECPaymentCardToken.GetType: TCieloPaymentType;
 begin
   Result := TCieloPaymentType.CreditCard;
+end;
+
+function TCieloECPaymentCardToken.SecurityCode: string;
+begin
+  Result := FSecurityCode;
 end;
 
 { TCieloECPaymentEletronicTransferBase }
@@ -1195,6 +1526,11 @@ begin
   Result := LJsonObject;
 end;
 
+function TCieloECPaymentCardToken.Brand: TCieloBrandType;
+begin
+  Result := FBrand;
+end;
+
 { TCieloECPaymentCreditCard }
 
 function TCieloECPaymentCreditCard.Authenticate(AValue: Boolean): ICieloECPaymentCreditCard;
@@ -1242,6 +1578,11 @@ end;
 function TCieloECPaymentCreditCard.GetType: TCieloPaymentType;
 begin
   Result := TCieloPaymentType.CreditCard;
+end;
+
+function TCieloECPaymentCreditCard.Holder: string;
+begin
+  Result := FHolder;
 end;
 
 function TCieloECPaymentCreditCard.Holder(AValue: string): ICieloECPaymentCreditCard;
@@ -1344,6 +1685,81 @@ begin
   Result := LJsonObjectPayment;
 end;
 
+function TCieloECPaymentCreditCard.Authenticate: Boolean;
+begin
+  Result := FAuthenticate;
+end;
+
+function TCieloECPaymentCreditCard.Brand: TCieloBrandType;
+begin
+  Result := FBrand;
+end;
+
+function TCieloECPaymentCreditCard.Capture: Boolean;
+begin
+  Result := FCapture;
+end;
+
+function TCieloECPaymentCreditCard.CardNumber: string;
+begin
+  Result := FCardNumber;
+end;
+
+function TCieloECPaymentCreditCard.Country: string;
+begin
+  Result := FCountry;
+end;
+
+function TCieloECPaymentCreditCard.Currency: string;
+begin
+  Result := FCurrency;
+end;
+
+function TCieloECPaymentCreditCard.ExpirationDate: string;
+begin
+  Result := FExpirationDate;
+end;
+
+function TCieloECPaymentCreditCard.Installments: Integer;
+begin
+  Result := FInstallments;
+end;
+
+function TCieloECPaymentCreditCard.Interest: TCieloInterest;
+begin
+  Result := FInterest;
+end;
+
+function TCieloECPaymentCreditCard.Provider: TCieloProvider;
+begin
+  Result := FProvider;
+end;
+
+function TCieloECPaymentCreditCard.ReturnUrl: string;
+begin
+  Result := FReturnUrl;
+end;
+
+function TCieloECPaymentCreditCard.SaveCard: Boolean;
+begin
+  Result := FSaveCard;
+end;
+
+function TCieloECPaymentCreditCard.SecurityCode: string;
+begin
+  Result := FSecurityCode;
+end;
+
+function TCieloECPaymentCreditCard.ServiceTaxAmount: Single;
+begin
+  Result := FServiceTaxAmount;
+end;
+
+function TCieloECPaymentCreditCard.SoftDescriptor: string;
+begin
+  Result := FSoftDescriptor;
+end;
+
 { TCieloECPaymentDebitCard }
 
 function TCieloECPaymentDebitCard.Authenticate(AValue: Boolean): ICieloECPaymentDebitCard;
@@ -1373,6 +1789,11 @@ end;
 function TCieloECPaymentDebitCard.GetType: TCieloPaymentType;
 begin
   Result := TCieloPaymentType.DebitCard;
+end;
+
+function TCieloECPaymentDebitCard.Holder: string;
+begin
+  Result := FHolder;
 end;
 
 function TCieloECPaymentDebitCard.Holder(AValue: string): ICieloECPaymentDebitCard;
@@ -1419,6 +1840,36 @@ begin
   LJsonObjectPayment.AddPair(Self.GetType.ToString, LJsonObjectCard as TJsonValue);
 
   Result := LJsonObjectPayment;
+end;
+
+function TCieloECPaymentDebitCard.Authenticate: Boolean;
+begin
+  Result := FAuthenticate;
+end;
+
+function TCieloECPaymentDebitCard.Brand: TCieloBrandType;
+begin
+  Result := FBrand;
+end;
+
+function TCieloECPaymentDebitCard.CardNumber: string;
+begin
+  Result := FCardNumber;
+end;
+
+function TCieloECPaymentDebitCard.ExpirationDate: string;
+begin
+  Result := FExpirationDate;
+end;
+
+function TCieloECPaymentDebitCard.ReturnUrl: string;
+begin
+  Result := FReturnUrl;
+end;
+
+function TCieloECPaymentDebitCard.SecurityCode: string;
+begin
+  Result := FSecurityCode;
 end;
 
 { TCieloECResponseError }
@@ -1475,6 +1926,26 @@ begin
   Result := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
 end;
 
+function TCieloECRecurrentPayment.AuthorizeNow: Boolean;
+begin
+  Result := FAuthorizeNow;
+end;
+
+function TCieloECRecurrentPayment.EndDate: TDate;
+begin
+  Result := FEndDate;
+end;
+
+function TCieloECRecurrentPayment.Interval: TCieloRecurrentInterval;
+begin
+  Result := FInterval;
+end;
+
+function TCieloECRecurrentPayment.StartDate: TDate;
+begin
+  Result := FStartDate;
+end;
+
 { TCieloECPaymentRecurrentCreditCard }
 
 function TCieloECPaymentRecurrentCreditCard.Authenticate(AValue: Boolean): ICieloECPaymentRecurrentCreditCard;
@@ -1513,6 +1984,11 @@ begin
   FInstallments := 1;
 end;
 
+function TCieloECPaymentRecurrentCreditCard.Currency: string;
+begin
+  Result := FCurrency;
+end;
+
 function TCieloECPaymentRecurrentCreditCard.Currency(AValue: string): ICieloECPaymentRecurrentCreditCard;
 begin
   FCurrency := AValue;
@@ -1528,6 +2004,11 @@ end;
 function TCieloECPaymentRecurrentCreditCard.GetType: TCieloPaymentType;
 begin
   Result := TCieloPaymentType.CreditCard;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.Holder: string;
+begin
+  Result := FHolder;
 end;
 
 function TCieloECPaymentRecurrentCreditCard.Holder(AValue: string): ICieloECPaymentRecurrentCreditCard;
@@ -1642,6 +2123,81 @@ begin
   Result := LJsonObjectPayment;
 end;
 
+function TCieloECPaymentRecurrentCreditCard.Authenticate: Boolean;
+begin
+  Result := FAuthenticate;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.Brand: TCieloBrandType;
+begin
+  Result := FBrand;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.Capture: Boolean;
+begin
+  Result := FCapture;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.CardNumber: string;
+begin
+  Result := FCardNumber;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.Country: string;
+begin
+  Result := FCountry;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.ExpirationDate: string;
+begin
+  Result := FExpirationDate;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.Interest: TCieloInterest;
+begin
+  Result := FInterest;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.Provider: TCieloProvider;
+begin
+  Result := FProvider;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.Recurrent: Boolean;
+begin
+  Result := FRecurrent;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.RecurrentPayment: ICieloECRecurrentPayment;
+begin
+  Result := FRecurrentPayment;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.ReturnUrl: string;
+begin
+  Result := FReturnUrl;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.SaveCard: Boolean;
+begin
+  Result := FSaveCard;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.SecurityCode: string;
+begin
+  Result := FSecurityCode;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.ServiceTaxAmount: Single;
+begin
+  Result := FServiceTaxAmount;
+end;
+
+function TCieloECPaymentRecurrentCreditCard.SoftDescriptor: string;
+begin
+  Result := FSoftDescriptor;
+end;
+
 { TCieloECCard }
 
 function TCieloECCard.Brand(AValue: TCieloBrandType): ICieloECCard;
@@ -1680,6 +2236,86 @@ var
 begin
   LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
   Result := LJsonObject;
+end;
+
+function TCieloECCard.Brand: TCieloBrandType;
+begin
+  Result := FBrand;
+end;
+
+function TCieloECCard.CardNumber: string;
+begin
+  Result := FCardNumber;
+end;
+
+function TCieloECCard.ExpirationDate: string;
+begin
+  Result := FExpirationDate;
+end;
+
+function TCieloECCard.Holder: string;
+begin
+  Result := FHolder;
+end;
+
+function TCieloECCard.SecurityCode: string;
+begin
+  Result := FSecurityCode;
+end;
+
+function TCieloECPaymentBoleto.Address: string;
+begin
+  Result := FAddress;
+end;
+
+function TCieloECPaymentBoleto.Assignor: string;
+begin
+  Result := FAssignor;
+end;
+
+function TCieloECPaymentBoleto.BoletoNumber: string;
+begin
+  Result := FBoletoNumber;
+end;
+
+function TCieloECPaymentBoleto.Demonstrative: string;
+begin
+  Result := FDemonstrative;
+end;
+
+function TCieloECPaymentBoleto.ExpirationDate: TDate;
+begin
+  Result := FExpirationDate;
+end;
+
+function TCieloECPaymentBoleto.Identification: string;
+begin
+  Result := FIdentification;
+end;
+
+function TCieloECPaymentBoleto.Instructions: string;
+begin
+  Result := FInstructions;
+end;
+
+function TCieloECPaymentBoleto.Provider: TCieloProvider;
+begin
+  Result := FProvider;
+end;
+
+function TCieloECPaymentBoleto.ReturnUrl: string;
+begin
+  Result := FReturnUrl;
+end;
+
+function TCieloECPaymentEletronicTransfer.Provider: TCieloProvider;
+begin
+  Result := FProvider;
+end;
+
+function TCieloECPaymentEletronicTransfer.ReturnUrl: string;
+begin
+  Result := FReturnUrl;
 end;
 
 end.
