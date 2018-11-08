@@ -4,7 +4,7 @@ interface
 
 uses Cielo.ECommerce.Interfaces, Cielo.ECommerce.Types, System.JSON, REST.JSON, REST.JSON.Types,
   System.Net.HttpClient, REST.JsonReflect, Cielo.ECommerce.JSONInterceptors, Cielo.ECommerce.UrlBuilder,
-  System.SysUtils, System.Generics.Collections;
+  System.SysUtils, System.Generics.Collections, Cielo.ECommerce.Utils;
 
 type
 
@@ -939,8 +939,6 @@ var
   LJsonObject: TJsonObject;
   LExportToJson: ICieloECExportToJson;
   LExportedJson: TJsonObject;
-  LJsonString: TJsonString;
-  LJsonValue: TJsonValue;
   I: Integer;
 begin
   LJsonObject := TJson.ObjectToJsonObject(Self, [TJsonOption.joIgnoreEmptyStrings]);
@@ -1654,7 +1652,7 @@ begin
   if not FSecurityCode.Trim.IsEmpty then
     LJsonObjectCard.AddPair('SecurityCode', FSecurityCode);
   if not FBrand.ToString.IsEmpty then
-    LJsonObjectCard.AddPair('Brand', FBrand.ToString);
+    LJsonObjectCard.AddPair('Brand', TCieloECUtils.BrandToCieloECString(FBrand));
   if FSaveCard then
     LJsonObjectCard.AddPair('SaveCard', FSaveCard.ToString(TUseBoolStrs.True));
 
@@ -1829,7 +1827,7 @@ begin
   if not FSecurityCode.Trim.IsEmpty then
     LJsonObjectCard.AddPair('SecurityCode', FSecurityCode);
   if not FBrand.ToString.IsEmpty then
-    LJsonObjectCard.AddPair('Brand', FBrand.ToString);
+    LJsonObjectCard.AddPair('Brand', TCieloECUtils.BrandToCieloECString(FBrand));
 
   LJsonObjectPayment := TJsonObject.Create;
   if FAuthenticate then
@@ -2087,7 +2085,7 @@ begin
   if not FSecurityCode.Trim.IsEmpty then
     LJsonObjectCard.AddPair('SecurityCode', FSecurityCode);
   if not FBrand.ToString.IsEmpty then
-    LJsonObjectCard.AddPair('Brand', FBrand.ToString);
+    LJsonObjectCard.AddPair('Brand', TCieloECUtils.BrandToCieloECString(FBrand));
   if FSaveCard then
     LJsonObjectCard.AddPair('SaveCard', FSaveCard.ToString(TUseBoolStrs.True));
 

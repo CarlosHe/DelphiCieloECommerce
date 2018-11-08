@@ -3,7 +3,7 @@ unit Cielo.ECommerce.JSONInterceptors;
 interface
 
 uses
-  System.SysUtils, System.RTTI, Cielo.ECommerce.Types, REST.JsonReflect;
+  System.SysUtils, System.RTTI, Cielo.ECommerce.Types, REST.JsonReflect, Cielo.ECommerce.Utils;
 
 var
   Marshal: TJSONMarshal;
@@ -23,7 +23,6 @@ type
     function StringConverter(Data: TObject; Field: string): string; override;
     procedure StringReverter(Data: TObject; Field: string; Arg: string); override;
   end;
-
 
   TCieloCustomerStatusInterceptor = class(TCieloEnumInterceptor<TCieloCustomerStatus>)
   public
@@ -209,7 +208,7 @@ end;
 
 function TCieloBrandTypeInterceptor.StringConverter(Data: TObject; Field: string): string;
 begin
-  Result := TCieloBrandType(ObjectToEnumValue(Data, Field)).ToString;
+  Result := TCieloECUtils.BrandToCieloECString(TCieloBrandType(ObjectToEnumValue(Data, Field)))
 end;
 
 procedure TCieloBrandTypeInterceptor.StringReverter(Data: TObject; Field, Arg: string);
@@ -241,7 +240,6 @@ end;
 function TCieloDateInterceptor.StringConverter(Data: TObject; Field: string): string;
 var
   LRttiContext: TRttiContext;
-  LValue: Integer;
   LType: TRttiType;
   LField: TRttiField;
   LExtendedDate: Extended;
@@ -249,11 +247,11 @@ begin
   LRttiContext := TRttiContext.Create;
   LType := LRttiContext.GetType(Data.ClassType);
   LField := LType.GetField(Field);
-  LExtendedDate:=LField.GetValue(Data).AsExtended;
+  LExtendedDate := LField.GetValue(Data).AsExtended;
   if LExtendedDate > 0 then
-  Result:= FormatDateTime('yyyy-mm-dd', StrToDateTime(LField.GetValue(Data).ToString)  )
+    Result := FormatDateTime('yyyy-mm-dd', StrToDateTime(LField.GetValue(Data).ToString))
   else
-  Result:= EmptyStr;
+    Result := EmptyStr;
 end;
 
 procedure TCieloDateInterceptor.StringReverter(Data: TObject; Field, Arg: string);
@@ -275,7 +273,7 @@ begin
   if Arg.Trim.IsEmpty then
     StringToEnumValue(Data, Field, Integer(TCieloRecurrentInterval.Null))
   else if Arg.Trim.ToUpper = 'MONTHLY' then
-    StringToEnumValue(Data, Field, Integer(TCieloRecurrentInterval.Monthly ))
+    StringToEnumValue(Data, Field, Integer(TCieloRecurrentInterval.Monthly))
   else if Arg.Trim.ToUpper = 'BIMONTHLY' then
     StringToEnumValue(Data, Field, Integer(TCieloRecurrentInterval.Bimonthly))
   else if Arg.Trim.ToUpper = 'QUARTERLY' then
