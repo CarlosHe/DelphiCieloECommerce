@@ -1086,7 +1086,7 @@ begin
     LParams := BuildUrlParams(AParams);
     AParams.Free;
   end;
-  Result := FHttpClient.Get(TCieloECUrlBuilder.Query(TCieloEnvironment.Sandbox) + ARoute + LParams);
+  Result := FHttpClient.Get(TCieloECUrlBuilder.Query(FEnvironment) + ARoute + LParams);
 end;
 
 function TCieloECAPI.GetCatchSale(APaymentId: TGUID; AParams: TDictionary<string, string>; ACieloECResponse: TCieloECResponse<ICieloECResponse>)
@@ -1170,7 +1170,7 @@ var
 begin
   LSource := TStringStream.Create(ABody);
   try
-    Result := FHttpClient.Post(TCieloECUrlBuilder.Request(TCieloEnvironment.Sandbox) + ARoute, LSource);
+    Result := FHttpClient.Post(TCieloECUrlBuilder.Request(FEnvironment) + ARoute, LSource);
   finally
     LSource.Free;
   end;
@@ -1190,7 +1190,7 @@ begin
         LParams := BuildUrlParams(AParams);
         AParams.Free;
       end;
-      Result := FHttpClient.Put(TCieloECUrlBuilder.Request(TCieloEnvironment.Sandbox) + ARoute + LParams, LSource);
+      Result := FHttpClient.Put(TCieloECUrlBuilder.Request(FEnvironment) + ARoute + LParams, LSource);
     finally
       LSource.Free;
     end;
